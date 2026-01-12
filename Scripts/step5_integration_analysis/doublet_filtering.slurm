@@ -6,9 +6,8 @@
 #SBATCH --job-name=doublet_filtering
 #SBATCH --time=12:00:00
 #SBATCH --partition=general
-#SBATCH --account=a_nefzger
-#SBATCH -o /home/s4799891/outputs/%x_%A_%a.out
-#SBATCH -e /home/s4799891/outputs/%x_%A_%a.err
+#SBATCH -o /home/s4869245/outputs/%x_%A_%a.out
+#SBATCH -e /home/s4869245/outputs/%x_%A_%a.err
 #SBATCH --array=1-n
 
 export DIR="/QRISdata/Q8448/Human_disease_Signac/Muscle/SObjects/universal_SCPM1/doublet_removed/"
