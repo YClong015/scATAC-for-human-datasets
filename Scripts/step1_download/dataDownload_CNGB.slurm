@@ -5,7 +5,6 @@
 #SBATCH --mem=32G
 #SBATCH --job-name=DWLD_CNGB
 #SBATCH --time=24:00:00
-#SBATCH --account=a_nefzger
 #SBATCH -o /home/s4896245/outputs/%x_%A_%a.out
 #SBATCH -e /home/s4896245/outputs/%x_%A_%a.err
 #SBATCH --array=1-n
