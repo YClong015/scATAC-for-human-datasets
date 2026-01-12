@@ -16,12 +16,12 @@ It also includes helper utilities for file renaming, bigWig conversion, and tabi
 
 * **Bioinformatics CLI Tools**:
     * **Alignment**: `BWA` (or `Bowtie2`), `Samtools`, `Bedtools`
-    * **Data Download**: `SRA Toolkit` (fastq-dump/prefetch), `synapseclient`
+    * **Data Download**: `SRA Toolkit`, `synapseclient`
     * **Peak Calling**: `MACS2`
-    * **Utilities**: `htslib` (tabix), `bedGraphToBigWig` (UCSC tools) or `deepTools`
+    * **Utilities**: `htslib`, `bedGraphToBigWig` or `deepTools`
 
 * **Python Libraries**:
-    * `pandas`, `numpy`, `pysam` (if used for BAM manipulation)
+    * `pandas`, `numpy`, `pysam` 
 
 * **R Packages**:
     * **Core**: `Seurat`, `Signac`, `dplyr`, `ggplot2`, `patchwork`, `Matrix`
