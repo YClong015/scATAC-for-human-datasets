@@ -6,8 +6,8 @@
 #SBATCH --job-name=DWLD
 #SBATCH --time=24:00:00
 #SBATCH --partition=general
-#SBATCH -o /home/s4799891/outputs/%x_%A_%a.out
-#SBATCH -e /home/s4799891/outputs/%x_%A_%a.err
+#SBATCH -o /home/s4896245/outputs/%x_%A_%a.out
+#SBATCH -e /home/s4896245/outputs/%x_%A_%a.err
 #SBATCH --array=1-n
 
 DATA=Eye
