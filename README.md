@@ -10,14 +10,24 @@ It also includes helper utilities for file renaming, bigWig conversion, and tabi
 ## Requirements
 
 * **System**: Linux environment with SLURM scheduler
-* **Bioinformatics Tools**:
-    * `samtools`, `bedtools`, `htslib/tabix`, `MACS2`
-    * bigWig tools: `bedGraphToBigWig` or `deepTools`
+* **Language Support**:
+    * R (>= 4.0)
+    * Python (>= 3.8)
+
+* **Bioinformatics CLI Tools**:
+    * **Alignment**: `BWA` (or `Bowtie2`), `Samtools`, `Bedtools`
+    * **Data Download**: `SRA Toolkit` (fastq-dump/prefetch), `synapseclient`
+    * **Peak Calling**: `MACS2`
+    * **Utilities**: `htslib` (tabix), `bedGraphToBigWig` (UCSC tools) or `deepTools`
+
+* **Python Libraries**:
+    * `pandas`, `numpy`, `pysam` (if used for BAM manipulation)
+
 * **R Packages**:
-    * `Seurat`, `Signac`
-    * (Ensure other dependencies required by the R scripts are installed)
-* **Motif Analysis**: `HOMER`
-* **Optional**: `synapseclient` (Synapse CLI) for downloading Brain_CB datasets.
+    * **Core**: `Seurat`, `Signac`, `dplyr`, `ggplot2`, `patchwork`, `Matrix`
+    * **Genomics**: `GenomicRanges`, `BSgenome.Hsapiens.UCSC.hg38`
+    * **Integration**: `harmony`, `DoubletFinder`
+    * **Motif**: `JASPAR2020`, `TFBSTools`
 
 ---
 
