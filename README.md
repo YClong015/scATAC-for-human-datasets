@@ -10,25 +10,30 @@ It also includes helper utilities for file renaming, bigWig conversion, and tabi
 ## Requirements
 
 * **System**: Linux environment with SLURM scheduler
-* **Language Support**:
-    * R (>= 4.0)
-    * Python (>= 3.8)
+* **Package Management**: All dependencies are defined in `environment.yml`.
+    * Install via: `conda env create -f environment.yml`
 
-* **Bioinformatics CLI Tools**:
-    * **Alignment**: `BWA` (or `Bowtie2`), `Samtools`, `Bedtools`
+* **Language Support**:
+    * R (>= 4.3)
+    * Python (>= 3.9)
+    * Perl (for HOMER)
+
+* **Bioinformatics CLI Tools** (Installed via Conda):
+    * **Alignment**: `BWA`, `Samtools`
     * **Data Download**: `SRA Toolkit`, `synapseclient`
     * **Peak Calling**: `MACS2`
-    * **Utilities**: `htslib`, `bedGraphToBigWig` or `deepTools`
+    * **Motif Analysis**: `HOMER`
+    * **Utilities**: `Bedtools`, `htslib` (tabix), `bedGraphToBigWig`, `pigz`
 
 * **Python Libraries**:
-    * `pandas`, `numpy`, `pysam` 
+    * `pandas`, `numpy`, `pysam`
 
 * **R Packages**:
     * **Core**: `Seurat`, `Signac`, `dplyr`, `ggplot2`, `patchwork`, `Matrix`
-    * **Genomics**: `GenomicRanges`, `BSgenome.Hsapiens.UCSC.hg38`
-    * **Integration**: `harmony`, `DoubletFinder`
-    * **Motif**: `JASPAR2020`, `TFBSTools`
-
+    * **Genomics**: `GenomicRanges`, `EnsDb.Hsapiens.v86` (or relevant species annotations)
+    * **Integration**: `harmony`
+    * **QC & Filtering**: `scDblFinder`
+    * **Motif Utilities**: `BiocGenerics`
 ---
 
 ## Inputs
