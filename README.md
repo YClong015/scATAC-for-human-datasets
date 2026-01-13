@@ -72,12 +72,12 @@ Each step is designed to be submitted as a SLURM job.
 
 #### SRA (Brain_N, Brain_SA, Eye, Heart, Kidney_NC, Liver, Lung)
 ```bash
-sbatch dataDownload_SRA.slurm
+sbatch scripts/01_download/dataDownload_SRA.slurm
 ```
 
 #### CNGB (Muscle)
 ```bash
-sbatch dataDownload_CNGB.slurm
+sbatch scripts/01_download/dataDownload_CNGB.slurm
 ```
 
 #### Synapse (Brain_CB)
@@ -92,19 +92,19 @@ synapse get-download-list --downloadLocation <DOWNLOAD_DIR>
 
 #### Standard Tissues (Brain_N, Brain_SA, Brain_CB, Heart, Kidney_NC, Lung)
 ```bash
-sbatch cellatac.slurm
+sbatch scripts/02_alignment/cellatac.slurm
 ```
 
 #### Eye
 ```bash
-sbatch cellarc.slurm
+sbatch scripts/02_alignment/cellarc.slurm
 ```
 
 #### Muscle
 ```bash
-sbatch dnbc4tools_stable.slurm
+sbatch scripts/02_alignment/dnbc4tools_stable.slurm
 # OR
-sbatch dnbc4tools_beta.slurm
+sbatch scripts/02_alignment/dnbc4tools_beta.slurm
 ```
 
 #### Liver (Precellar Pipeline)
@@ -117,9 +117,9 @@ This tissue requires a specific sequence of scripts:
 
 **Run order:**
 ```bash
-sbatch modify_header.slurm
-sbatch precellar_barcode.slurm
-sbatch precellar_align.slurm
+sbatch scripts/02_alignment/modify_header.slurm
+sbatch scripts/02_alignment/precellar_barcode.slurm
+sbatch scripts/02_alignment/precellar_align.slurm
 ```
 
 ---
@@ -129,7 +129,7 @@ sbatch precellar_align.slurm
 Uses MACS2 via Python wrapper.
 
 ```bash
-sbatch MACS.slurm
+sbatch scripts/03_peak_calling/MACS.slurm
 ```
 
 ---
@@ -141,22 +141,22 @@ The merging strategy follows this hierarchy:
 
 #### 1. Sample → Donor peak set
 ```bash
-sbatch consensus_peak_ind.slurm
+sbatch scripts/04_peak_merging/consensus_peak_ind.slurm
 ```
 
 #### 2. Donor → Tissue/Disease peak set
 ```bash
-sbatch consensus_peak_tissue.slurm
+sbatch scripts/04_peak_merging/consensus_peak_tissue.slurm
 ```
 
 #### 3. Unique Peaks Filtering
 ```bash
-sbatch peak_uniq.slurm
+sbatch scripts/04_peak_merging/peak_uniq.slurm
 ```
 
 #### 4. Tissue/Disease → Universal peak set
 ```bash
-sbatch consensus_peak_universal.slurm
+sbatch scripts/04_peak_merging/consensus_peak_universal.slurm
 ```
 
 ---
@@ -165,35 +165,35 @@ sbatch consensus_peak_universal.slurm
 
 #### Create Seurat Objects (Per-sample)
 ```bash
-sbatch SeuratObject.slurm
+sbatch scripts/05_integration_analysis/SeuratObject.slurm
 ```
 
 #### Merge into Donor Objects
 ```bash
-sbatch DonorObject.slurm
+sbatch scripts/05_integration_analysis/DonorObject.slurm
 ```
 
 #### Doublet Filtering
 ```bash
-sbatch doublet_filtering.slurm
+sbatch scripts/05_integration_analysis/doublet_filtering.slurm
 ```
 
 #### Integration + Cell Type Annotation
 ```bash
-sbatch integration.slurm
+sbatch scripts/05_integration_analysis/integration.slurm
 ```
 
 #### DAR Calling
 If SLURM scripts are available, submit via `sbatch`. Otherwise, run directly in R:
 ```bash
-Rscript cell_types.R
-Rscript DAR.R
+Rscript scripts/05_integration_analysis/cell_types.R
+Rscript scripts/05_integration_analysis/DAR.R
 ```
 
 #### Motif Enrichment
 ```bash
-sbatch HOMER.slurm
-Rscript motif_visualisation.R
+sbatch scripts/05_integration_analysis/HOMER.slurm
+Rscript scripts/05_integration_analysis/motif_visualisation.R
 ```
 
 ---
@@ -202,17 +202,17 @@ Rscript motif_visualisation.R
 
 #### Rename Downloaded Sample Names
 ```bash
-sbatch renaming.slurm
+sbatch scripts/other_helping_scripts/renaming.slurm
 ```
 
 #### Convert fragments.tsv.gz to bigWig
 ```bash
-sbatch frag_bigwig.slurm
+sbatch scripts/other_helping_scripts/frag_bigwig.slurm
 ```
 
 #### Generate Tabix Index for Fragments
 ```bash
-sbatch tabix.slurm
+sbatch scripts/other_helping_scripts/tabix.slurm
 ```
 
 ---

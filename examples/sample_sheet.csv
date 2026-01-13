@@ -1,0 +1,4 @@
+sample_id,donor_id,tissue,condition,data_source,fastq_1,fastq_2
+Lung_Ctrl_01,Donor_A,Lung,Control,SRA,/data/raw_fastq/SRR1001_1.fastq.gz,/data/raw_fastq/SRR1001_2.fastq.gz
+Lung_Treat_01,Donor_A,Lung,Treated,SRA,/data/raw_fastq/SRR1002_1.fastq.gz,/data/raw_fastq/SRR1002_2.fastq.gz
+Kidney_Ctrl_02,Donor_B,Kidney,Control,InHouse,/data/project/patient2/run_R1.fq.gz,/data/project/patient2/run_R2.fq.gz

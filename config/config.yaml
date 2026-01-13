@@ -1,0 +1,62 @@
+# scATAC-seq Pipeline Configuration Template
+
+# 1. Project Directories (Absolute Paths Recommended)
+directories:
+  # Where the raw FASTQ files are located
+  raw_data: "/path/to/your/raw_fastq_folder"
+  
+  # Main output directory for alignment and peak calling results
+  processed_data: "/path/to/your/output/processed"
+  
+  # Final directory for Seurat/Signac analysis objects and plots
+  results: "/path/to/your/output/analysis_results"
+  
+  # Directory for SLURM log files
+  logs: "logs/"
+
+# 2. Reference Genome Files (Hg38 Example)
+reference:
+  build: "hg38"
+  
+  # Path to the genome FASTA file (Required for BWA alignment)
+  fasta: "/path/to/references/hg38/hg38.fa"
+  
+  # Path to the gene annotation GTF file (Required for TSS enrichment & Annotation)
+  gtf: "/path/to/references/hg38/gencode.v32.annotation.gtf"
+  
+  # Path to chromosome sizes file (Required for bigWig conversion)
+  chrom_sizes: "/path/to/references/hg38/hg38.chrom.sizes"
+  
+  # Path to ENCODE blacklist regions (Recommended for filtering artifact peaks)
+  blacklist: "/path/to/references/hg38/hg38.blacklist.bed"
+
+# 3. Alignment & Preprocessing Parameters
+alignment:
+  aligner: "bwa"
+  mapq_cutoff: 30       # Minimum mapping quality to keep a read
+  threads: 16           # Number of threads for alignment steps
+
+# 4. Peak Calling (MACS2) Parameters
+macs2:
+  genome_size: "hs"     # 'hs' for human, 'mm' for mouse
+  q_value: 0.05         # FDR cutoff
+  shift: -100           # Standard shift for ATAC-seq
+  extsize: 200          # Standard extension size for ATAC-seq
+  keep_dup: "all"       # Duplicates are usually handled by Picard/Samtools before this
+
+# 5. Downstream Analysis (Seurat/Signac) Parameters
+qc:
+  min_peaks: 500        # Minimum number of peaks per cell
+  max_peaks: 30000      # Maximum number of peaks (to filter potential doublets)
+  min_tss: 2.0          # Minimum TSS enrichment score
+  nucleosome_signal: 4  # Maximum nucleosome signal score
+
+integration:
+  method: "harmony"     # Batch correction method
+  lsi_dims: 30          # Number of dimensions for LSI (Latent Semantic Indexing)
+
+# 6. SLURM Resource Defaults
+slurm:
+  partition: "general"  # Partition name on your cluster
+  time: "24:00:00"      # Max runtime
+  mem: "64G"            # Default memory allocation
