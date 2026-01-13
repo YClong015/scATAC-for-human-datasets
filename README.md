@@ -30,7 +30,7 @@ It also includes helper utilities for file renaming, bigWig conversion, and tabi
 
 * **R Packages**:
     * **Core**: `Seurat`, `Signac`, `dplyr`, `ggplot2`, `patchwork`, `Matrix`
-    * **Genomics**: `GenomicRanges`, `EnsDb.Hsapiens.v86` (or relevant species annotations)
+    * **Genomics**: `GenomicRanges`, `EnsDb.Hsapiens.v86`
     * **Integration**: `harmony`
     * **QC & Filtering**: `scDblFinder`
     * **Motif Utilities**: `BiocGenerics`
