@@ -38,15 +38,26 @@ It also includes helper utilities for file renaming, bigWig conversion, and tabi
 
 ## Inputs
 
-To run this pipeline, you need:
+To run this pipeline, you need to prepare two main components:
 
-1.  **Sample Sheet**: A CSV/TSV file containing at least the following columns:
-    * `sample_id`, `donor_id`, `tissue`, `condition`, `data_source`, `fastq_1`, `fastq_2`
-2.  **Reference Files**:
-    * Genome FASTA
-    * Annotation GTF
-    * Chromosome sizes
-    * Blacklist regions (optional)
+### 1. Sample Sheet (`sample_sheet.csv`)
+A CSV file containing metadata and file paths for each sample. 
+> **Tip**: An example is provided in `examples/sample_sheet.csv`.
+
+**Required Columns:**
+* `sample_id`: Unique identifier for the sample.
+* `donor_id`: Identifier for the biological donor (for merging/integration).
+* `tissue`: Tissue type (e.g., Lung, Kidney).
+* `condition`: Experimental condition (e.g., Control, Treated).
+* `data_source`: Origin of data (e.g., SRA, In-house).
+* `fastq_1`: Absolute path to Read 1 file (`.fastq.gz`).
+* `fastq_2`: Absolute path to Read 2 file (`.fastq.gz`).
+
+### 2. Reference Files
+* **Genome FASTA**: (`.fa` or `.fasta`) required for alignment (BWA).
+* **Annotation GTF**: (`.gtf`) required for peak annotation and TSS enrichment QC.
+* **Chromosome Sizes**: (`chrom.sizes`) required for bigWig conversion.
+* **Blacklist Regions**: (`.bed`) optional but recommended for filtering artifact peaks (e.g., ENCODE blacklist).
 
 ---
 
