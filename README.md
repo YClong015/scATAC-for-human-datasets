@@ -219,6 +219,11 @@ sbatch tabix.slurm
 
 ## Notes
 
-* **Version Control**: Do **NOT** commit large files (FASTQ, BAM, fragments, bigWig) to git. Ensure they are listed in your `.gitignore`.
-* **Configuration**: It is recommended to keep paths and parameters in a separate `config/` folder or file to keep scripts clean.
-* **Logging**: Suggested SLURM log directory structure: `logs/<jobname>_%j.out`.
+* ** Data Management**:
+    Large intermediate files (FASTQ, BAM, fragments, bigWig) are strictly excluded via `.gitignore` to maintain repository hygiene. **Do NOT** force commit these files.
+
+* ** Configuration**:
+    Hard-coding paths in scripts is discouraged. All analysis parameters and directory paths should be managed via the `config/config.yaml` file.
+
+* **Ep Logging**:
+    SLURM logs are directed to the `logs/` directory. The standard naming convention used in `.slurm` scripts is `logs/<job_name>_%j.out` (where `%j` is the job ID) to facilitate debugging.
