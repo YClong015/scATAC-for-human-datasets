@@ -1,0 +1,52 @@
+name: scatac_pipeline
+channels:
+  - conda-forge
+  - bioconda
+  - r
+  - defaults
+dependencies:
+  # ----------------------------
+  # 1. Core Languages
+  # ----------------------------
+  - python=3.9
+  - r-base=4.3.0
+  - perl                    
+  # ----------------------------
+  # 2. CLI Bioinformatics Tools 
+  # ----------------------------
+  - bwa                         
+  - samtools                   
+  - bedtools                   
+  - htslib                      
+  - sra-tools                  
+  - ucsc-bedgraphtobigwig     
+  - pigz                        
+  # ----------------------------
+  # 3. Python Libraries
+  # ----------------------------
+  - macs2                       
+  - pandas                     
+  - numpy                       
+  - pysam                    
+  - synapseclient              
+  # ----------------------------
+  # 4. Motif Analysis
+  # ----------------------------
+  - homer                    
+  # ----------------------------
+  # 5. R Packages
+  # ----------------------------
+  - r-seurat
+  - r-signac
+  - r-harmony                
+  - r-ggplot2
+  - r-patchwork
+  - r-dplyr
+  - r-matrix
+  # Bioconductor packages
+  - bioconductor-scdblfinder    
+  - bioconductor-biocgenerics
+  - bioconductor-genomicranges
+  - bioconductor-genomeinfodb
+  # Genome Annotation
+  - bioconductor-ensdb.hsapiens.v86
